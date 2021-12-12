@@ -215,7 +215,7 @@
             style: 'mapbox://styles/mapbox/dark-v10',
             center: [-120.65, 47.20],
             zoom: 6,
-            scrollZoom: false
+            scrollZoom: true
         });
 
         async function geojsonFetch() {
@@ -241,7 +241,7 @@
                  * This is where your '.addLayer()' used to be, instead
                  * add only the source without styling a layer
                  */
-                map.addSource('library', {
+                map.addSource('lib', {
                     'type': 'geojson',
                     'data': libraries
                 });
@@ -253,7 +253,7 @@
                     accessToken: mapboxgl.accessToken,
                     mapboxgl: mapboxgl,
                     marker: true,
-                    bbox: [-77.210763, 38.803367, -76.853675, 39.052643]
+                    bbox: [-122.4581, 47.5104, , -122.2425, 47.7291],
                 });
 
                 /**
@@ -275,7 +275,7 @@
                  * - Open a popup for the closest library
                  * - Highlight the listing for the closest library.
                  */
-                geocoder.on('result', (event) => {
+                 geocoder.on('result', (event) => {
                     /* Get the coordinate of the search result */
                     const searchResult = event.result.geometry;
 
@@ -297,10 +297,10 @@
                     }
 
                     /**
-                     * Sort libraries by distance from closest to the `searchResult`
+                     * Sort stores by distance from closest to the `searchResult`
                      * to furthest.
                      */
-                    libraries.features.sort((a, b) => {
+                     libraries.features.sort((a, b) => {
                         if (a.properties.distance > b.properties.distance) {
                             return 1;
                         }
@@ -326,7 +326,7 @@
 
                     /** Highlight the listing for the closest library. */
                     const activeListing = document.getElementById(
-                        `listing-${libraries.features[0].properties.OBJECTID}`
+                        `listing-${libraries.features[0].properties.id}`
                     );
                     activeListing.classList.add('active');
 
@@ -390,7 +390,7 @@
                     /* Create a div element for the marker. */
                     const el = document.createElement('div');
                     /* Assign a unique `id` to the marker. */
-                    el.id = `marker-${marker.properties.OBJECTID}`;
+                    el.id = `marker-${marker.properties.id}`;
                     /* Assign the `marker` class to each marker for styling. */
                     el.className = 'marker';
 
@@ -435,7 +435,7 @@
                     const listings = document.getElementById('listings');
                     const listing = listings.appendChild(document.createElement('div'));
                     /* Assign a unique `id` to the listing. */
-                    listing.id = `listing-${library.properties.OBJECTID}`;
+                    listing.id = `listing-${library.properties.id}`;
                     /* Assign the `item` class to each listing for styling. */
                     listing.className = 'item';
 
@@ -443,7 +443,7 @@
                     const link = listing.appendChild(document.createElement('a'));
                     link.href = '#';
                     link.className = 'title';
-                    link.id = `link-${library.properties.OBJECTID}`;
+                    link.id = `link-${library.properties.id}`;
                     link.innerHTML = `${library.properties.Branch}`;
 
                     /* Add details to the individual listing. */
@@ -504,7 +504,7 @@
                     })
                     .setLngLat(currentFeature.geometry.coordinates)
                     .setHTML(
-                        `<h3>Library</h3><h4>${currentFeature.properties.Branch}</h4>`
+                        `<h3>${currentFeature.properties.Branch}</h3><h4>${currentFeature.properties.LDLI_City}</h4><h4>${currentFeature.properties.LDLI_AddPhones}</h4>`
                     )
                     .addTo(map);
             }
