@@ -19,6 +19,32 @@ https://notzulkifli.github.io/geog495finalproject/index.html
 
 ## Screenshots:
 
+All of Washington states libraries:
+### King County:
+![Washingtonlib](/img/washington_libraries.PNG "washingtonstate")
+
+ Western Washington counties:
+
+### King County:
+![Kingcounty](/img/king_county.PNG "kingcounty")
+
+### Pierce County:
+![Piercecounty](/img/pierce_county.PNG "Piercecounty")
+
+Eastern Washington:
+### Eastern County:
+![EasternWashington](/img/eastern_wa.PNG "EasternWashington")
+
+Eastern Washington Counties:
+### Yakima County:
+![Yakimacounty](/img/yakima.PNG "yakimacounty")
+
+### Walla Walla County:
+![WalllaWallacounty](/img/walla_walla.PNG "wallawallacounty")
+
+### Spokane County:
+![Spokanecounty](/img/spokane.PNG "spokanecounty")
+
 ## Main functions:
 Using Geocoding capabilities that were taught in week 7 as well as web-based spatial analysis, mainly sorting by distance taught in week 8. These functions as well as a side-panel that includes detailed legend (library location count), asynchronous data loading while scrolling and/or while sorting data, and clickable check boxes that can aggregate the data and display different type of libraries (academic, government, public, special) on the map. We are specifically using Mapbox GL Js to make a flyto function as well as creating popups for the information on the side-panel and the library that is clicked on. Some other functions to note are:
 -	getBbox()
